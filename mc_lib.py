@@ -71,7 +71,8 @@ def chart_perf(ticker_lst):
 # function behind button to run monte carlo simulation - couldn't resist the name
 def mc_hammer(ticker_lst):
     # remove any previous result set
-    os.remove("mc.pickle")
+    if os.path.exists("mc.pickle"):
+        os.remove("mc.pickle")
 
     # prepare 5-year portfolio from ticker list
     port = port_prep(ticker_lst)

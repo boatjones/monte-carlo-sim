@@ -23,7 +23,7 @@ root.title("Monte Carlo Simulation")
 
 # window size
 window_width = 600
-window_height = 500
+window_height = 350
 
 # get overall screen size and center window initially
 screen_width = root.winfo_screenwidth()
