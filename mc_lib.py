@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+"""
+    This is the library file to the main Python program.  You may wish to adjust three items
+    in this file: 1) the number of years to lookback can be adjusted on line 22 in function port_prep,
+    2) the number of Monte Carlo iterations can be changed on line 112 of function mc_hammer (currently 6000), 
+    3) the risk free rate used in the Sharpe ratio.  Currently set to zero.  Enter as decimal not percentage.
+    located line 122 of function mc_hammer.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -112,8 +118,9 @@ def mc_hammer(ticker_lst):
         sim_volatility = calculate_volatility(weights, log_rets_cov)
         mc_portfolio_vol.append(sim_volatility)
 
-    # assume zero risk-free rate to calculate Sharpe ratio
-    mc_sharpe_ratios = np.array(mc_portfolio_returns / np.array(mc_portfolio_vol))
+    # calculates Sharpe ratio
+    risk_free = 0.00
+    mc_sharpe_ratios = np.array((mc_portfolio_returns - risk_free) / np.array(mc_portfolio_vol))
 
     port_list = list(port.columns)
 
